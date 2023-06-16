@@ -3,7 +3,8 @@ import { MessageTypeEnum } from "./message-type.enum";
 export class MessageModel {
     constructor(
       private date: Date,
-      private message: string,
+      private subject: string,
+      private body: string,
       private type: MessageTypeEnum,
       private open: boolean = false,
       private read: boolean = false
@@ -17,12 +18,20 @@ export class MessageModel {
       this.date = date;
     }
   
-    public getMessage(): string {
-      return this.message;
+    public getSubject(): string {
+      return this.subject;
     }
   
-    public setMessage(message: string): void {
-      this.message = message;
+    public setSubject(subject: string): void {
+      this.subject = subject;
+    }
+  
+    public getBody(): string {
+      return this.body;
+    }
+  
+    public setBody(body: string): void {
+      this.body = body;
     }
   
     public getType(): MessageTypeEnum {
