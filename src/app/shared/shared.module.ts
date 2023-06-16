@@ -1,12 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { InfoModalComponent } from './info-modal/info-modal.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    InfoModalComponent
+  ],
   imports: [
-    CommonModule
+    // Official Modules
+    CommonModule,
+    // Third Party Modules
+  ],
+  exports: [
+    CommonModule,
+    InfoModalComponent
   ]
 })
-export class SharedModule { }
+export class SharedModule {}
