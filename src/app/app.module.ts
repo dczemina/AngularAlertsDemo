@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CoreModule } from './core/core/core.module';
 
 import { AppComponent } from './app.component';
 
@@ -8,7 +9,12 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    // Official Modules
+    BrowserModule,
+    // Custom Modules
+    CoreModule
+    // Third Party Modules
+    // None
   ],
   providers: [],
   bootstrap: [AppComponent]
