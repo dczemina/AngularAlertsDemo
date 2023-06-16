@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { CoreModule } from './core/core/core.module';
+import { CoreModule } from './core/core.module';
 
 import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { AppComponent } from './app.component';
     // Official Modules
     BrowserModule,
     // Custom Modules
-    CoreModule
+    CoreModule,
+    SharedModule
     // Third Party Modules
     // None
   ],
