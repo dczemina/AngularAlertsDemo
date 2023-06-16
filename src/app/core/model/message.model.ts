@@ -1,8 +1,10 @@
+import { MessageTypeEnum } from "./message-type.enum";
+
 export class MessageModel {
     constructor(
       private date: Date,
       private message: string,
-      private type: string,
+      private type: MessageTypeEnum,
       private open: boolean = false,
       private read: boolean = false
     ) {}
@@ -23,11 +25,11 @@ export class MessageModel {
       this.message = message;
     }
   
-    public getType(): string {
+    public getType(): MessageTypeEnum {
       return this.type;
     }
   
-    public setType(type: string): void {
+    public setType(type: MessageTypeEnum): void {
       this.type = type;
     }
   
