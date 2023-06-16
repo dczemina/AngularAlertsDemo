@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { SharedModule } from '../shared/shared.module';
+import { MessageService } from './message.service';
 
 
 
@@ -11,6 +11,9 @@ import { SharedModule } from '../shared/shared.module';
     // Official Modules
     CommonModule,
     FormsModule,
+  ],
+  providers: [
+    MessageService
   ]
 })
 export class CoreModule { }
