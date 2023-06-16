@@ -4,6 +4,7 @@ import { CoreModule } from './core/core.module';
 
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
+import { SomeFeatureModule } from './some-feature/some-feature.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     // Custom Modules
     CoreModule,
-    SharedModule
+    SharedModule,
+    SomeFeatureModule
     // Third Party Modules
     // None
   ],
