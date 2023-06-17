@@ -57,4 +57,23 @@ export class MessageModel {
     public setRead(read: boolean): void {
       this.read = read;
     }
+
+    /* Check if all properties are equal */
+    public equals(message: MessageModel): boolean {
+        if (this.getDate() !== message.getDate())
+            return false;
+        if (this.getSubject() !== message.getSubject())
+            return false;
+        if (this.getBody() !== message.getBody())
+            return false;
+        if (this.getType() !== message.getType())
+            return false;
+        if (this.getOpen() !== message.getOpen())
+            return false;
+        if (this.getRead() !== message.getRead())
+            return false;
+
+        return true;
+    }
   }
+  
