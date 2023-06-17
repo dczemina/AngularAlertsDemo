@@ -1,0 +1,12 @@
+<p-menubar [model]="navItems">
+    <ng-template pTemplate="start">
+        <h1>Some Application</h1>
+    </ng-template>
+    <ng-template let-item pTemplate="item">
+        <a [routerLink]="[item.routerLink]" routerLinkActive="active">
+          {{ item.label }}
+          <span *ngIf="item.badge | async" class="p-badge">{{ item.badge }}</span>
+        </a>
+      </ng-template>
+</p-menubar>
+
