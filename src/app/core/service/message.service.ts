@@ -1,58 +1,99 @@
 import { Injectable } from '@angular/core';
 import { MessageModel } from '../model/message.model';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessageService {
 
-  messagesModalVisible: boolean = false;
-  messages: MessageModel[];
+  // Messages Array - contains all of the messages
+  messages: BehaviorSubject<MessageModel[]> = new BehaviorSubject<MessageModel[]>([]);
+  unreadMessages: BehaviorSubject<MessageModel[]> = new BehaviorSubject<MessageModel[]>([]);
+  readMessages: BehaviorSubject<MessageModel[]> = new BehaviorSubject<MessageModel[]>([]);
+
+  // Length of Messages Array - used for notifications
+  messagesLength: Subject<number> = new Subject<number>();
+  obsMessagesLength: Observable<number> = this.messagesLength.asObservable();
+
+  // Visibility of the modal
+  messagesModalVisible: Subject<boolean> = new Subject<boolean>();
+  obsMessagesModelVisible: Observable<boolean> = this.messagesModalVisible.asObservable();
 
   constructor() {
-    this.messages = [];
+    this.messagesLength.next(this.messages.getValue().length);
   }
 
-  public getMessages(): MessageModel[] {
+  public getMessages(): Observable<MessageModel[]> {
     return this.messages;
   }
 
+  public getUnreadMessages(): Observable<MessageModel[]> {
+    return this.unreadMessages;
+  }
+
+  public getReadMessages(): Observable<MessageModel[]> {
+    return this.readMessages;
+  }
+
   public addMessage(message: MessageModel) {
-    this.messages = [...this.messages, message];
+    this.messages.next([...this.messages.getValue(), message]);
+    console.log("addMessage", this.messages.getValue().length);
+    this.determineMessageStatus();
   }
 
   public removeMessage(messageToDelete: MessageModel) {
     console.debug('Not implemented');
-    this.messages = this.messages.filter(message => {
+    this.messages.next(this.messages.getValue().filter(message => {
       return !message.equals(messageToDelete);
-    })
+    }));
+    this.determineMessageStatus();
   }
 
-  public readMessage(message: MessageModel): void {
-    message.setRead(true);
+  public readMessage(index: number): void {
+    this.messages.getValue().forEach((message, messageIndex) => {
+      if (messageIndex === index) {
+        message.setRead(true);
+        return; // no need to iterate remaining items
+      }
+    });
+    this.determineMessageStatus();
   }
 
   public readAllMessages(): void {
-    this.messages.forEach(message => {
+    this.messages.getValue().forEach(message => {
       message.setRead(true);
     });
+    this.determineMessageStatus();
   }
 
   public unreadAllMessages(): void {
-    this.messages.forEach(message => {
+    this.messages.getValue().forEach(message => {
       message.setRead(false);
     });
+    this.determineMessageStatus();
   }
 
-  public unreadMessage(message: MessageModel): void {
-    message.setRead(false);
+  public unreadMessage(index: number): void {
+    this.messages.getValue().forEach((message, messageIndex) => {
+      if (messageIndex === index) {
+        message.setRead(false);
+        return; // no need to iterate remaining items
+      }
+    });
+    this.determineMessageStatus();
   }
 
   setMessagesModalVisibility(state: boolean): void {
-    this.messagesModalVisible = state;
+    this.messagesModalVisible.next(state);
   }
 
-  getMessagesModalVisibility(): boolean {
-    return this.messagesModalVisible;
+  private determineMessageStatus(): void {
+    this.unreadMessages.next(this.messages.getValue().filter(message => {
+      return message.getRead() === false;
+    }));
+    this.readMessages.next(this.messages.getValue().filter(message => {
+      return message.getRead() === true;
+    }));
   }
 }
