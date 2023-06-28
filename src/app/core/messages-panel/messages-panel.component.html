@@ -1,9 +1,9 @@
 <p-sidebar [(visible)]="visible" (visibleChange)="toggleVisibility($event)" class="wtf">
     <!-- Button Bar -->
     <div class="messages-button-bar">
-        <p-button icon="pi pi-check" styleClass="p-button-sm" class="mr-2" label="Read All"></p-button>
-        <p-button icon="pi pi-times" styleClass="p-button-sm p-button-success mr-2" label="Unread All"></p-button>
-        <p-button icon="pi pi-trash" styleClass="p-button-sm p-button-danger" label="Delete All"></p-button>
+        <p-button icon="pi pi-check" styleClass="p-button-sm" class="mr-2" label="Read All" type="button" (onClick)="readAllMessages()"></p-button>
+        <p-button icon="pi pi-times" styleClass="p-button-sm p-button-success mr-2" label="Unread All" type="button" (onClick)="unreadAllMessages()"></p-button>
+        <p-button icon="pi pi-trash" styleClass="p-button-sm p-button-danger" label="Delete All" type="button" (onClick)="deleteAllMessages()"></p-button>
     </div>
     <!-- Messages -->
     <p-accordion [activeIndex]="0">

@@ -36,16 +36,20 @@ export class MessageService {
     return this.readMessages;
   }
 
-  public addMessage(message: MessageModel) {
+  public addMessage(message: MessageModel): void {
     this.messages.next([...this.messages.getValue(), message]);
     this.determineMessageStatus();
   }
 
-  public removeMessage(messageToDelete: MessageModel) {
+  public deleteMessage(messageToDelete: MessageModel): void {
     this.messages.next(this.messages.getValue().filter(message => {
       return !message.equals(messageToDelete);
     }));
     this.determineMessageStatus();
+  }
+
+  public deleteAllMessages(): void {
+    this.messages.next([]);
   }
 
   public readMessage(index: number): void {

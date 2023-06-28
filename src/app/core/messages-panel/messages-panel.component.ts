@@ -48,4 +48,16 @@ export class MessagesPanelComponent implements OnInit, OnDestroy {
     this.messageService.readMessage(index);
   }
 
+  public readAllMessages(): void {
+    this.messageService.readAllMessages();
+  }
+
+  public unreadAllMessages(): void {
+    this.messageService.unreadAllMessages();
+  }
+
+  public deleteAllMessages(): void {
+    this.messageService.deleteAllMessages();
+  }
+
 }
