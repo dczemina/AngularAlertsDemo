@@ -16,6 +16,7 @@ export class NavComponent implements OnInit, OnDestroy {
 
   navItems: MenuItem[];
 
+  toggleMessageBarVisibility: boolean;
 
   constructor(private messageService: MessageService) {
     this.subscriptions = [];
@@ -33,9 +34,12 @@ export class NavComponent implements OnInit, OnDestroy {
       },
       {
         icon: PrimeIcons.BELL,
-        badge: '' // blank initially
+        badge: '', // blank initially
+        command: () => this.toggleMessageBarVisibility = !this.toggleMessageBarVisibility
       }
     ];
+
+    this.toggleMessageBarVisibility = false;
   }
 
   ngOnInit() {

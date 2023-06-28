@@ -1,0 +1,20 @@
+<p-sidebar [(visible)]="visible" (visibleChange)="toggleVisibility($event)" class="wtf">
+    <!-- Button Bar -->
+    <div class="messages-button-bar">
+        <p-button icon="pi pi-check" styleClass="p-button-sm" class="mr-2" label="Read All"></p-button>
+        <p-button icon="pi pi-times" styleClass="p-button-sm p-button-success mr-2" label="Unread All"></p-button>
+        <p-button icon="pi pi-trash" styleClass="p-button-sm p-button-danger" label="Delete All"></p-button>
+    </div>
+    <!-- Messages -->
+    <p-accordion [activeIndex]="0">
+        <p-accordionTab *ngFor="let message of this.messages; let i = index" >
+            <ng-template let-item pTemplate="header">
+                <div class="custom-accordion-header">
+                    <div>{{message.getSubject()}}</div>
+                    <div>{{message.getDate() | date:'YYYY-MM-dd HH:mm:ss z'}}</div>
+                </div>
+            </ng-template>
+            <p>{{message.getBody()}}</p>
+        </p-accordionTab>
+    </p-accordion>
+</p-sidebar>

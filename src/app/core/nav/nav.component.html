@@ -3,10 +3,11 @@
         <h1>Some Application</h1>
     </ng-template>
     <ng-template let-item pTemplate="item">
-        <a [routerLink]="[item.routerLink]" routerLinkActive="active">
+        <span [routerLink]="[item.routerLink]" routerLinkActive="active">
           {{ item.label }}
           <span *ngIf="item.badge | async" class="p-badge">{{ item.badge }}</span>
-        </a>
+        </span>
       </ng-template>
 </p-menubar>
+<app-messages-panel [visible]="toggleMessageBarVisibility" (onVisibilityChange)="toggleMessageBarVisibility = $event"></app-messages-panel>
 

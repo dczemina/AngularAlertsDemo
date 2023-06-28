@@ -1,31 +1,34 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { InfoModalComponent } from './info-modal/info-modal.component';
 // Third Party Modules
 // PrimeNG Modules
+import { AccordionModule } from 'primeng/accordion';
 import { BadgeModule } from 'primeng/badge';
-import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
+import { SidebarModule } from 'primeng/sidebar';
 
 
 @NgModule({
-  declarations: [
-    InfoModalComponent
-  ],
+  declarations: [],
   imports: [
     // Official Modules
     CommonModule,
     // Third Party Modules
+    AccordionModule,
     BadgeModule,
-    ConfirmDialogModule,
-    MenubarModule
+    ButtonModule,
+    MenubarModule,
+    SidebarModule
   ],
+  providers: [],
   exports: [
+    AccordionModule,
     CommonModule,
-    InfoModalComponent,
     BadgeModule,
-    ConfirmDialogModule,
-    MenubarModule
+    ButtonModule,
+    MenubarModule,
+    SidebarModule
   ]
 })
 export class SharedModule {}

@@ -38,12 +38,10 @@ export class MessageService {
 
   public addMessage(message: MessageModel) {
     this.messages.next([...this.messages.getValue(), message]);
-    console.log("addMessage", this.messages.getValue().length);
     this.determineMessageStatus();
   }
 
   public removeMessage(messageToDelete: MessageModel) {
-    console.debug('Not implemented');
     this.messages.next(this.messages.getValue().filter(message => {
       return !message.equals(messageToDelete);
     }));
@@ -84,7 +82,7 @@ export class MessageService {
     this.determineMessageStatus();
   }
 
-  setMessagesModalVisibility(state: boolean): void {
+  public setMessagesModalVisibility(state: boolean): void {
     this.messagesModalVisible.next(state);
   }
 

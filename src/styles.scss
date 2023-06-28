@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+/* Custom PrimeNG p-sidebar styling */
+.p-sidebar {
+    min-width: 100vw;
+}
+
+@media screen and (min-width: 768px) {
+    .p-sidebar {
+        min-width: 768px; /* Set the width for small screens */
+    }
+}
+
+.custom-accordion-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* import PrimeNG component styles */
+@import "../node_modules/primeng/resources/themes/lara-light-blue/theme.css";
+@import "../node_modules/primeng/resources/primeng.css";

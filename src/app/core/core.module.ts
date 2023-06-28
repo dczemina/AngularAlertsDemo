@@ -5,14 +5,19 @@ import { FormsModule } from '@angular/forms';
 import { MessageService } from './service/message.service';
 import { NavComponent } from './nav/nav.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MessagesPanelComponent } from './messages-panel/messages-panel.component';
+
 
 
 @NgModule({
   declarations: [
+    MessagesPanelComponent,
     NavComponent
   ],
   imports: [
     // Official Modules
+    BrowserAnimationsModule,
     CommonModule,
     FormsModule,
     // Custom Modules
@@ -22,6 +27,7 @@ import { NavComponent } from './nav/nav.component';
     MessageService
   ],
   exports: [
+    MessagesPanelComponent,
     NavComponent
   ]
 })
