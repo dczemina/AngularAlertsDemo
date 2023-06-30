@@ -3,17 +3,47 @@
     min-width: 100vw;
 }
 
-@media screen and (min-width: 768px) {
-    .p-sidebar {
-        min-width: 768px; /* Set the width for small screens */
-    }
-}
-
 .custom-accordion-header {
     width: 100%;
     display: flex;
     flex-direction: row;
+}
+
+.custom-accordion-header-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    margin: 0px 6px;
+    font-size: 14px;
+}
+
+.custom-accordion-header-icon {
+    // width: 32px;
+    padding: 0px 2px;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+.custom-accordion-header-icon div {
+    margin: 0px 2px;
+}
+
+.custom-accordion-content {
+    font-size: 12px;
+}
+
+
+
+@media screen and (min-width: 768px) {
+    .p-sidebar {
+        min-width: 768px; /* Set the width for small screens */
+    }
+
+    .custom-accordion-header-text {
+        flex-direction: row;
+    }
 }
 
 /* import PrimeNG component styles */

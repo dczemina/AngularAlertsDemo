@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 import { MessageService } from '../service/message.service';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { MessageModel } from '../model/message.model';
+import { CheckboxChangeEvent } from 'primeng/checkbox';
 
 @Component({
   selector: 'app-messages-panel',
@@ -43,9 +44,9 @@ export class MessagesPanelComponent implements OnInit, OnDestroy {
     this.onVisibilityChange.emit(event);
   }
 
-  public readMessage(index: number): void {
-    console.log(index);
-    this.messageService.readMessage(index);
+  public readMessage(event: CheckboxChangeEvent, message: MessageModel): void {
+    event.originalEvent?.stopPropagation(); // Don't toggle the accordion for checking the check-box
+    message.setRead(event.checked);
   }
 
   public readAllMessages(): void {
@@ -61,3 +62,4 @@ export class MessagesPanelComponent implements OnInit, OnDestroy {
   }
 
 }
+

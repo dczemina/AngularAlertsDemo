@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { AccordionModule } from 'primeng/accordion';
 import { BadgeModule } from 'primeng/badge';
 import { ButtonModule } from 'primeng/button';
+import { CheckboxModule } from 'primeng/checkbox';
 import { MenubarModule } from 'primeng/menubar';
 import { SidebarModule } from 'primeng/sidebar';
 
@@ -18,6 +19,7 @@ import { SidebarModule } from 'primeng/sidebar';
     AccordionModule,
     BadgeModule,
     ButtonModule,
+    CheckboxModule,
     MenubarModule,
     SidebarModule
   ],
@@ -27,6 +29,7 @@ import { SidebarModule } from 'primeng/sidebar';
     CommonModule,
     BadgeModule,
     ButtonModule,
+    CheckboxModule,
     MenubarModule,
     SidebarModule
   ]
