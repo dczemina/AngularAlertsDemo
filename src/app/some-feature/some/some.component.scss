@@ -1,0 +1,12 @@
+.some-feature {
+    margin: 32px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.some-feature * {
+    margin: 8px;
+}

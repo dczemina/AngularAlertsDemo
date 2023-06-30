@@ -44,9 +44,13 @@ export class MessagesPanelComponent implements OnInit, OnDestroy {
     this.onVisibilityChange.emit(event);
   }
 
-  public readMessage(event: CheckboxChangeEvent, message: MessageModel): void {
+  public readMessage(event: CheckboxChangeEvent, index: number): void {
     event.originalEvent?.stopPropagation(); // Don't toggle the accordion for checking the check-box
-    message.setRead(event.checked);
+    if (event.checked) {
+      this.messageService.readMessage(index);
+    } else {
+      this.messageService.unreadMessage(index);
+    }
   }
 
   public readAllMessages(): void {

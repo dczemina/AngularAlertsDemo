@@ -49,9 +49,6 @@ export class NavComponent implements OnInit, OnDestroy {
         this.navItems[2].badge = (messages.length === 0? '' : messages.length.toString()); // Setting directly because tieing to variable or function does not work as intended
       }
     ));
-
-    // Add placeholder method
-    this.messageService.addMessage(new MessageModel(new Date(), "Test", "Message", MessageTypeEnum.info, false, false))
   }
 
   ngOnDestroy() {
