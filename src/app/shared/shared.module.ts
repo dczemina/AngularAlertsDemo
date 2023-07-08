@@ -6,6 +6,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { BadgeModule } from 'primeng/badge';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
+import { InputSwitchModule } from 'primeng/inputswitch';
 import { MenubarModule } from 'primeng/menubar';
 import { SidebarModule } from 'primeng/sidebar';
 
@@ -20,6 +21,7 @@ import { SidebarModule } from 'primeng/sidebar';
     BadgeModule,
     ButtonModule,
     CheckboxModule,
+    InputSwitchModule,
     MenubarModule,
     SidebarModule
   ],
@@ -30,6 +32,7 @@ import { SidebarModule } from 'primeng/sidebar';
     BadgeModule,
     ButtonModule,
     CheckboxModule,
+    InputSwitchModule,
     MenubarModule,
     SidebarModule
   ]

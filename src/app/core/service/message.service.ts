@@ -54,7 +54,7 @@ export class MessageService {
   }
 
   public readMessage(index: number): void {
-    this.messages.getValue().forEach((message, messageIndex) => {
+    this.unreadMessages.getValue().forEach((message, messageIndex) => {
       if (messageIndex === index) {
         message.setRead(true);
         return; // no need to iterate remaining items

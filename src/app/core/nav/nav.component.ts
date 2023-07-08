@@ -1,8 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PrimeIcons, MenuItem } from 'primeng/api';
 import { MessageService } from '../service/message.service';
-import { MessageModel } from '../model/message.model';
-import { MessageTypeEnum } from '../model/message-type.enum';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -18,9 +16,12 @@ export class NavComponent implements OnInit, OnDestroy {
 
   toggleMessageBarVisibility: boolean;
 
+  notificationCount: string;
+
   constructor(private messageService: MessageService) {
     this.subscriptions = [];
 
+    this.notificationCount = '';
     this.navItems = [
       {
         label: 'Dashboard',
@@ -31,11 +32,6 @@ export class NavComponent implements OnInit, OnDestroy {
         label: 'Reports',
         icon: PrimeIcons.CHART_BAR,
         disabled: true
-      },
-      {
-        icon: PrimeIcons.BELL,
-        badge: '', // blank initially
-        command: () => this.toggleMessageBarVisibility = !this.toggleMessageBarVisibility
       }
     ];
 
@@ -46,7 +42,7 @@ export class NavComponent implements OnInit, OnDestroy {
     // Get # of unread messages
     this.subscriptions.push(this.messageService.getUnreadMessages()
       .subscribe(messages => {
-        this.navItems[2].badge = (messages.length === 0? '' : messages.length.toString()); // Setting directly because tieing to variable or function does not work as intended
+        this.notificationCount = (messages.length === 0? '' : messages.length.toString());
       }
     ));
   }

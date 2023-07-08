@@ -2,12 +2,11 @@
     <ng-template pTemplate="start">
         <h1>Some Application</h1>
     </ng-template>
-    <ng-template let-item pTemplate="item">
-        <span [routerLink]="[item.routerLink]" routerLinkActive="active">
-          {{ item.label }}
-          <span *ngIf="item.badge | async" class="p-badge">{{ item.badge }}</span>
-        </span>
-      </ng-template>
+    <ng-template pTemplate="end">
+      <div>
+        <p-button label="" icon="pi pi-bell" iconPos="left" styleClass="p-button-secondary p-button-text p-button-sm"  (onClick)="this.toggleMessageBarVisibility = !this.toggleMessageBarVisibility" [badge]="this.notificationCount" badgeClass="p-badge-danger"></p-button>
+      </div>
+    </ng-template>
 </p-menubar>
 <app-messages-panel [visible]="toggleMessageBarVisibility" (onVisibilityChange)="toggleMessageBarVisibility = $event"></app-messages-panel>
 

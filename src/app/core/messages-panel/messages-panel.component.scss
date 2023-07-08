@@ -1,5 +1,7 @@
 .messages-button-bar {
     width: 100%;
-    text-align: center;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
     margin: 12px 0px;
 }

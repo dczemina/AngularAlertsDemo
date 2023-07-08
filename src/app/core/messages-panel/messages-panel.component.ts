@@ -12,27 +12,35 @@ import { CheckboxChangeEvent } from 'primeng/checkbox';
 export class MessagesPanelComponent implements OnInit, OnDestroy {
 
   subscriptions: Subscription[];
-  messages: MessageModel[];
+  // messages: MessageModel[];
+  readMessages: MessageModel[];
+  unreadMessages: MessageModel[];
+
+  showReadMessages: boolean = true;
 
   @Input() visible: boolean = false;
   @Output() onVisibilityChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private messageService: MessageService) {
     this.subscriptions = [];
-    this.messages = [];
+    this.readMessages = [];
+    this.unreadMessages = [];
   }
 
   ngOnInit(): void {
-
-    this.subscriptions.push(this.messageService.getMessages()
+    this.subscriptions.push(this.messageService.getReadMessages()
       .subscribe(messages => {
-        this.messages = messages;
+        this.readMessages = messages;
+      }))
+    this.subscriptions.push(this.messageService.getUnreadMessages()
+      .subscribe(messages => {
+        this.unreadMessages = messages;
       }))
   }
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(subscription => {
-      subscription.unsubscribe()
+      subscription.unsubscribe();
     })
   }
 
@@ -63,6 +71,13 @@ export class MessagesPanelComponent implements OnInit, OnDestroy {
 
   public deleteAllMessages(): void {
     this.messageService.deleteAllMessages();
+  }
+
+  public getMessages(): MessageModel[] {
+    if (this.showReadMessages) {
+      return [...this.unreadMessages, ...this.readMessages];
+    }
+    return [...this.unreadMessages];
   }
 
 }
