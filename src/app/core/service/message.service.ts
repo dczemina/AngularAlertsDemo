@@ -50,6 +50,7 @@ export class MessageService {
 
   public deleteAllMessages(): void {
     this.messages.next([]);
+    this.determineMessageStatus();
   }
 
   public readMessage(index: number): void {
