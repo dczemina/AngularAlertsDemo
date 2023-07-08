@@ -1,6 +1,8 @@
 import { MessageTypeEnum } from "./message-type.enum";
 
 export class MessageModel {
+    private uid: any;
+
     constructor(
       private date: Date,
       private subject: string,
@@ -8,7 +10,13 @@ export class MessageModel {
       private type: MessageTypeEnum,
       private open: boolean = false,
       private read: boolean = false
-    ) {}
+    ) {
+      this.uid = crypto.randomUUID();
+    }
+
+    public getUid(): any {
+      return this.uid;
+    }
   
     public getDate(): Date {
       return this.date;

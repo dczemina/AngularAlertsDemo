@@ -52,12 +52,12 @@ export class MessagesPanelComponent implements OnInit, OnDestroy {
     this.onVisibilityChange.emit(event);
   }
 
-  public readMessage(event: CheckboxChangeEvent, index: number): void {
+  public readMessage(event: CheckboxChangeEvent, message: MessageModel): void {
     event.originalEvent?.stopPropagation(); // Don't toggle the accordion for checking the check-box
     if (event.checked) {
-      this.messageService.readMessage(index);
+      this.messageService.readMessage(message.getUid());
     } else {
-      this.messageService.unreadMessage(index);
+      this.messageService.unreadMessage(message.getUid());
     }
   }
 
@@ -75,9 +75,13 @@ export class MessagesPanelComponent implements OnInit, OnDestroy {
 
   public getMessages(): MessageModel[] {
     if (this.showReadMessages) {
-      return [...this.unreadMessages, ...this.readMessages];
+      return [...this.unreadMessages, ...this.readMessages].sort((a: MessageModel,b: MessageModel) => {
+        return b.getDate().getTime() - a.getDate().getTime();
+      });
     }
-    return [...this.unreadMessages];
+    return [...this.unreadMessages].sort((a: MessageModel,b: MessageModel) => {
+      return b.getDate().getTime() - a.getDate().getTime();
+    });;
   }
 
 }

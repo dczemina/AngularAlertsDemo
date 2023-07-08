@@ -53,9 +53,9 @@ export class MessageService {
     this.determineMessageStatus();
   }
 
-  public readMessage(index: number): void {
-    this.unreadMessages.getValue().forEach((message, messageIndex) => {
-      if (messageIndex === index) {
+  public readMessage(uid: number): void {
+    this.unreadMessages.getValue().forEach((message) => {
+      if (message.getUid() === uid) {
         message.setRead(true);
         return; // no need to iterate remaining items
       }
@@ -77,9 +77,9 @@ export class MessageService {
     this.determineMessageStatus();
   }
 
-  public unreadMessage(index: number): void {
-    this.messages.getValue().forEach((message, messageIndex) => {
-      if (messageIndex === index) {
+  public unreadMessage(uid: number): void {
+    this.messages.getValue().forEach((message) => {
+      if (message.getUid() === uid) {
         message.setRead(false);
         return; // no need to iterate remaining items
       }

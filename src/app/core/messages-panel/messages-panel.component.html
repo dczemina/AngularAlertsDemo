@@ -9,7 +9,7 @@
     </div>
     <!-- Messages -->
     <p-accordion [activeIndex]="0">
-        <p-accordionTab *ngFor="let message of this.getMessages(); let i = index">
+        <p-accordionTab *ngFor="let message of this.getMessages()">
             <ng-template let-item pTemplate="header">
                 <div class="custom-accordion-header">
                     <div class="custom-accordion-header-text">
@@ -21,7 +21,7 @@
                             <i class="pi pi-book text-3xl"></i>
                         </div>
                         <div>
-                            <p-checkbox [ngModel]="message.getRead()" (onChange)="readMessage($event, i)" [binary]="true" inputId="binary"></p-checkbox>
+                            <p-checkbox [ngModel]="message.getRead()" (onChange)="readMessage($event, message)" [binary]="true" inputId="binary"></p-checkbox>
                         </div>
                     </div>
                 </div>
